@@ -11,12 +11,15 @@ export default function Topo () {
     useEffect(()=> {
 
         const retorno = carregaTopo();
-        setTitulo(retorno.boaVindas)
+
+    
+        console.log(retorno)
+        // setTitulo(retorno.boaVindas)
 
     }, []);
     return <View style={estilos.topo}>
         <Image source={logo} style={estilos.imagem}/>
-        <Text style={estilos.boasVindas}>{titulo}</Text>
+        <Text style={estilos.boasVindas} >{titulo}</Text>
         <Text style={estilos.legenda}>Encontre os melhores produtores</Text>
     </View>
 }
