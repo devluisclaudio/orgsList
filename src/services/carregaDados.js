@@ -5,13 +5,9 @@ import api from "./api";
 
 
 export const carregaProdutores = () => {
-    return produtores
+    return api.get('produtores')
 }
 
-export const carregaTopo =  () => {
-
-    // api.get('topo').then( ({data}) => {
-    //      data
-    // }).catch(err => console.log(err))
-    // return topo
+export const carregaTopo = () => {
+    return api.get('topo')
 }

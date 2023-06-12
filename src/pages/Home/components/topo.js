@@ -7,20 +7,18 @@ import logo from '../../../assets/logo.png'
 import { carregaTopo } from "../../../services/carregaDados";
 export default function Topo () {
     const [titulo, setTitulo] = useState('');
+    const [legenda, setLegenda] = useState('');
 
     useEffect(()=> {
-
-        const retorno = carregaTopo();
-
-    
-        console.log(retorno)
-        // setTitulo(retorno.boaVindas)
-
+        carregaTopo().then(({ data }) => {
+            setTitulo(data.boaVindas)
+            setLegenda(data.legenda)
+        }).catch(() => alert('Falha na conexão') )
     }, []);
     return <View style={estilos.topo}>
         <Image source={logo} style={estilos.imagem}/>
         <Text style={estilos.boasVindas} >{titulo}</Text>
-        <Text style={estilos.legenda}>Encontre os melhores produtores</Text>
+        <Text style={estilos.legenda}>{legenda}</Text>
     </View>
 }
 

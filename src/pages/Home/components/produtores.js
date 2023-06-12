@@ -7,13 +7,14 @@ import Produtor from './produtor'
 export default function Produtores() {
     const [titulo, setTitulo] = useState('')
     const [lista, setLista] = useState([])
-    
-    useEffect(()=>{
-        const retorno = carregaProdutores()
 
-        setTitulo(retorno.titulo)
-        setLista(retorno.lista)
-    },[])
+    useEffect(() => {
+        carregaProdutores().then(({ data }) => {
+            setTitulo(data.titulo)
+            setLista(data.lista)
+        }).catch(() => alert('Não encontrou produtores'))
+
+    }, [])
 
     const TopoLista = () => {
         return <Text style={estilos.titulo}>{titulo}</Text>
@@ -22,8 +23,8 @@ export default function Produtores() {
     return <>
         <FlatList
             data={lista}
-            renderItem={({item}) => <Produtor {...item}/>}
-            keyExtractor={ ({ nome }) => nome}
+            renderItem={({ item }) => <Produtor {...item} />}
+            keyExtractor={({ nome }) => nome}
             ListHeaderComponent={TopoLista}
         />
     </>

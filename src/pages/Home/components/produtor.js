@@ -4,8 +4,8 @@ import { TouchableOpacity, Image, Text, View, StyleSheet } from 'react-native'
 export default function Produtor({ nome, imagem, distancia }) {
 
     return <>
-        <TouchableOpacity style={estilos.cartao} onPress={() => { }}>
-            <Image source={imagem} style={estilos.imagem}/>
+        <TouchableOpacity style={estilos.cartao} onPress={() => alert( 'Clicou ')}>
+            {imagem && <Image source={imagem} style={estilos.imagem}/> }
             <View style={estilos.informacoes}>
                 <Text style={estilos.nome}>{nome}</Text>
                 <Text style={estilos.distancia}>{`${distancia}m`}</Text>
